@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/home/home.dart';
+import 'package:PortfolioF/home/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const PortfolioF());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class PortfolioF extends StatelessWidget {
+  const PortfolioF({super.key});
 
   // This widget is the root of your application.
   @override

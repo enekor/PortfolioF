@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:lottie/lottie.dart';
-import 'package:myapp/widgets/PortfolioButton.dart';
+import 'package:PortfolioF/widgets/PortfolioButton.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -14,14 +14,22 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   final List<String> words = [
     "Hola",
-    // "Hola",
+    //  "Hola",
     // "Mi nombre es Eneko",
-    // "Déjame presentarme",
+    //  "Déjame presentarme",
     "inicio"
   ];
   int currentIndex = 0;
   bool isVisible = false;
   late AnimationController _controller;
+
+  void onProjects() {
+    print("Projects");
+  }
+
+  void onProfile() {
+    print("Profile");
+  }
 
   @override
   void initState() {
@@ -91,18 +99,24 @@ class _MyHomePageState extends State<MyHomePage>
           Container(
             color: Color.fromARGB(255, 238, 245, 245),
             child: Center(
-                child: Column(
+                child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 PortfolioButton(
-                  title: "Prueba",
-                  subtitle: "Prueba2",
-                )
+                  title: "Sobre mi",
+                  subtitle: "Mi curriculum de forma mas visual",
+                  onClick: onProfile,
+                ),
+                PortfolioButton(
+                  title: "Mis proyectos",
+                  subtitle: "Listado de los proyectos que estan en mi github",
+                  onClick: onProjects,
+                ),
               ],
             )),
           ),
-          Positioned(
+          const Positioned(
             left: 100,
             right: 100,
             child: Column(

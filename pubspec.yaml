@@ -1,4 +1,4 @@
-name: myapp
+name: PortfolioF
 description: "A new Flutter project."
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -8,6 +8,7 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  auto_size_text: ^3.0.0
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
