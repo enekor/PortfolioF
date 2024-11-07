@@ -34,7 +34,7 @@ class _PortfolioButtonState extends State<PortfolioButton> {
           alignment: Alignment.center,
           children: [
             AnimatedContainer(
-              duration: Duration(milliseconds: 600),
+              duration: Duration(milliseconds: 300),
               curve: Curves.easeIn,
               width: 200, // Ancho específico del botón
               height: 100, // Alto específico del botón
@@ -44,19 +44,15 @@ class _PortfolioButtonState extends State<PortfolioButton> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: _isHovered
                     ? [
-                        const BoxShadow(
-                            blurStyle: BlurStyle.inner,
-                            color: Color.fromRGBO(50, 50, 93, 0.25),
-                            offset: Offset(0, -30),
-                            blurRadius: 60,
-                            spreadRadius: -12,
+                        BoxShadow(
+                            color: Colors.grey.shade500, // Sombra más oscura
+                            offset: Offset(4, 4),
+                            blurRadius: 0,
                             inset: true),
                         const BoxShadow(
-                            blurStyle: BlurStyle.inner,
-                            color: Color.fromRGBO(0, 0, 0, 0.3),
-                            offset: Offset(0, -18),
-                            blurRadius: 36,
-                            spreadRadius: -18,
+                            color: Colors.white, // Sombra más clara
+                            offset: Offset(-4, -4),
+                            blurRadius: 0,
                             inset: true),
                       ]
                     : [
@@ -111,7 +107,8 @@ class _PortfolioButtonState extends State<PortfolioButton> {
                   child: Center(
                     child: Lottie.network(
                         "https://lottie.host/9a1dfeff-aae4-4916-9652-4772310b491e/ZqzP1w0V1S.json",
-                        reverse: true),
+                        reverse: true,
+                        repeat: false),
                   ),
                 ),
               ),

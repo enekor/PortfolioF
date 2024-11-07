@@ -14,9 +14,9 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   final List<String> words = [
     "Hola",
-    //  "Hola",
-    // "Mi nombre es Eneko",
-    //  "Déjame presentarme",
+    "Hola",
+    "Mi nombre es Eneko",
+    "Déjame presentarme",
     "inicio"
   ];
   int currentIndex = 0;
@@ -64,27 +64,25 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color.fromARGB(255, 238, 245, 245),
-        child: Center(
-          child: AnimatedOpacity(
-            opacity: isVisible ? 1.0 : 0.0,
-            duration: Duration(milliseconds: 1000),
-            child: SlideTransition(
-              position: Tween<Offset>(
-                begin: Offset(0, 1), // Comienza desde abajo
-                end: Offset(0, 0), // Termina en su posición original
-              ).animate(CurvedAnimation(
-                parent: _controller,
-                curve: Curves.easeIn,
-              )),
-              child: words[currentIndex] != "inicio"
-                  ? Text(
-                      words[currentIndex],
-                      style: TextStyle(fontSize: 24),
-                    )
-                  : portfolioStart(),
-            ),
+      backgroundColor: Color.fromARGB(255, 238, 245, 245),
+      body: Center(
+        child: AnimatedOpacity(
+          opacity: isVisible ? 1.0 : 0.0,
+          duration: Duration(milliseconds: 1000),
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: Offset(0, 1), // Comienza desde abajo
+              end: Offset(0, 0), // Termina en su posición original
+            ).animate(CurvedAnimation(
+              parent: _controller,
+              curve: Curves.easeIn,
+            )),
+            child: words[currentIndex] != "inicio"
+                ? Text(
+                    words[currentIndex],
+                    style: TextStyle(fontSize: 24),
+                  )
+                : portfolioStart(),
           ),
         ),
       ),
@@ -93,29 +91,9 @@ class _MyHomePageState extends State<MyHomePage>
 
   Widget portfolioStart() {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 238, 245, 245),
       body: Stack(
         children: [
-          // Aquí puedes agregar otros widgets que ocupen toda la pantalla
-          Container(
-            color: Color.fromARGB(255, 238, 245, 245),
-            child: Center(
-                child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                PortfolioButton(
-                  title: "Sobre mi",
-                  subtitle: "Mi curriculum de forma mas visual",
-                  onClick: onProfile,
-                ),
-                PortfolioButton(
-                  title: "Mis proyectos",
-                  subtitle: "Listado de los proyectos que estan en mi github",
-                  onClick: onProjects,
-                ),
-              ],
-            )),
-          ),
           const Positioned(
             left: 100,
             right: 100,
@@ -145,6 +123,28 @@ class _MyHomePageState extends State<MyHomePage>
                 fit: BoxFit.fill,
               ),
             ),
+          ),
+          // Aquí puedes agregar otros widgets que ocupen toda la pantalla
+          Container(
+            color: Colors.transparent,
+            child: Center(
+                child: Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                PortfolioButton(
+                  title: "Sobre mi",
+                  subtitle: "Mi curriculum de forma mas visual",
+                  onClick: onProfile,
+                ),
+                PortfolioButton(
+                  title: "Mis proyectos",
+                  subtitle: "Listado de los proyectos que estan en mi github",
+                  onClick: onProjects,
+                ),
+              ],
+            )),
           ),
         ],
       ),
