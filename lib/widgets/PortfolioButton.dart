@@ -3,18 +3,22 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:lottie/lottie.dart';
 
+typedef HoverCallBack = void Function(bool isHovered);
+
 class PortfolioButton extends StatefulWidget {
   final String title; // Título del botón
   final String subtitle; // Subtítulo que aparecerá al pasar el ratón
   final VoidCallback onClick; // Acción al hacer clic
+  final HoverCallBack onHover; // Acción al pasar el ratón
 
   // Constructor que recibe el título, el subtítulo y la acción al hacer clic
-  const PortfolioButton({
-    Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.onClick,
-  }) : super(key: key);
+  const PortfolioButton(
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.onClick,
+      required this.onHover})
+      : super(key: key);
 
   @override
   _PortfolioButtonState createState() => _PortfolioButtonState();
@@ -26,8 +30,14 @@ class _PortfolioButtonState extends State<PortfolioButton> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+      onEnter: (_) => setState(() {
+        _isHovered = true;
+        widget.onHover(true);
+      }),
+      onExit: (_) => setState(() {
+        _isHovered = false;
+        widget.onHover(false);
+      }),
       child: GestureDetector(
         onTap: widget.onClick, // Acción al hacer clic
         child: Stack(
